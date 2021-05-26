@@ -3,21 +3,34 @@ var keystrokes = [];
 var correctShortcut = document.getElementById("shortcut").textContent;
 var correctShortcutArr = correctShortcut.split('+').map(function (item) {
     return item.trim();
-});
-correctShortcutArr = correctShortcutArr.sort()
-var correctShortcutStr = correctShortcut.toString().toLowerCase()
+}).sort();
+var correctShortcutStr = correctShortcutArr.toString().toLowerCase()
+
+var keyboardEvent = document.createEvent('KeyboardEvent');
+var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
+
 
 
 if (window.SwitcherListener == undefined) {
     window.SwitcherListener = true
     $(document).keydown(function (event) {
         if (keystrokes.length < correctShortcutArr.length) {
-            keystrokes.push(event.key);
+            if (event.keyCode == 32) {
+                keystrokes.push(event.code);
+            }
+            else {
+                keystrokes.push(event.key);
+            };
             event.preventDefault();
         }
         else if (keystrokes.length >= correctShortcutArr.length) {
             keystrokes = [];
-            keystrokes.push(event.key);
+            if (event.keyCode == 32) {
+                keystrokes.push(event.code);
+            }
+            else {
+                keystrokes.push(event.key);
+            };
             event.preventDefault();
         }
         $('#pressed_key').html(keystrokes.join(" + "));
@@ -27,9 +40,9 @@ if (window.SwitcherListener == undefined) {
         var keystrokes_sorted = keystrokes.slice().sort()
 
         if (keystrokes_sorted.toString().toLowerCase() == correctShortcutStr) {
-            $('#pressed_key').html(correctShortcut);
             document.getElementById("pressed_key").style.visibility = "hidden";
-            document.getElementById("pressed_key").style.color = "green";
+            keystrokes = [];
+            $('#pressed_key').html(keystrokes.join(" + "));
             $('#right_shortcut').html(correctShortcut);
             document.getElementById("right_shortcut").style.color = "green";
             event.preventDefault();
@@ -41,11 +54,9 @@ if (window.SwitcherListener == undefined) {
             event.preventDefault();
             if (keystrokes.length <= correctShortcutArr.length && document.getElementById("pressed_key").style.color == "red") {
                 setTimeout(() => {
+                    keystrokes = [];
                     $('#pressed_key').html(keystrokes.join(" + "));
                 }, 1500);
-                if (document.getElementById("pressed_key").style.color == "red") {
-                    keystrokes = [];
-                }
             }
         }
     })

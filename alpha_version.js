@@ -18,6 +18,7 @@ if (window.SwitcherListener == undefined) {
     document.getElementById("pressed_key").style.color = "red";
 
     var keystrokes_sorted = keystrokes.slice().sort()
+
     if (keystrokes_sorted.toString().toLowerCase() == correctShortcut.split(' + ').sort().toString().toLowerCase()) {
       $('#pressed_key').html(correctShortcut);
       document.getElementById("pressed_key").style.visibility = "hidden";
@@ -25,10 +26,8 @@ if (window.SwitcherListener == undefined) {
       $('#right_shortcut').html(correctShortcut);
       document.getElementById("right_shortcut").style.color = "green";
       event.preventDefault();
-      return;
     }
-
-    if (keystrokes_sorted.toString().toLowerCase() != correctShortcut.split(' + ').sort().toString().toLowerCase()) {
+    else {
       document.getElementById("pressed_key").style.visibility = "visible";
       $('#pressed_key').html(keystrokes.join(" + "));
       document.getElementById("pressed_key").style.color = "red";
