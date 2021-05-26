@@ -20,10 +20,15 @@ if (window.SwitcherListener == undefined) {
     var keystrokes_sorted = keystrokes.slice().sort()
     if (keystrokes_sorted.toString().toLowerCase() == correctShortcut.split(' + ').sort().toString().toLowerCase()) {
       $('#pressed_key').html(correctShortcut);
+      document.getElementById("pressed_key").style.visibility = "hidden";
       document.getElementById("pressed_key").style.color = "green";
+      $('#right_shortcut').html(correctShortcut);
+      document.getElementById("right_shortcut").style.color = "green";
       event.preventDefault();
+      return;
     }
-    else {
+
+    if (keystrokes_sorted.toString().toLowerCase() != correctShortcut.split(' + ').sort().toString().toLowerCase()) {
       document.getElementById("pressed_key").style.visibility = "visible";
       $('#pressed_key').html(keystrokes.join(" + "));
       document.getElementById("pressed_key").style.color = "red";

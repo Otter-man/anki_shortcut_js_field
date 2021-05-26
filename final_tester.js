@@ -1,20 +1,21 @@
 
 var keystrokes = [];
-var correct_shortcut = document.getElementById("shortcut").textContent;
-var correct_shortcut_arr = correct_shortcut.split(' + ').map(function (item) {
+var correctShortcut = document.getElementById("shortcut").textContent;
+var correctShortcutArr = correctShortcut.split('+').map(function (item) {
     return item.trim();
 });
-correct_shortcut_arr = correct_shortcut_arr.sort().toString().toLowerCase()
+correctShortcutArr = correctShortcutArr.sort()
+var correctShortcutStr = correctShortcut.toString().toLowerCase()
 
 
 if (window.SwitcherListener == undefined) {
     window.SwitcherListener = true
     $(document).keydown(function (event) {
-        if (keystrokes.length < correct_shortcut.split('+').length) {
+        if (keystrokes.length < correctShortcutArr.length) {
             keystrokes.push(event.key);
             event.preventDefault();
         }
-        else if (keystrokes.length >= correct_shortcut.split('+').length) {
+        else if (keystrokes.length >= correctShortcutArr.length) {
             keystrokes = [];
             keystrokes.push(event.key);
             event.preventDefault();
@@ -25,8 +26,8 @@ if (window.SwitcherListener == undefined) {
 
         var keystrokes_sorted = keystrokes.slice().sort()
 
-        if (keystrokes_sorted.toString().toLowerCase() == correct_shortcut_arr) {
-            $('#pressed_key').html(correct_shortcut);
+        if (keystrokes_sorted.toString().toLowerCase() == correctShortcutStr) {
+            $('#pressed_key').html(correctShortcut);
             document.getElementById("pressed_key").style.color = "green";
             event.preventDefault();
         }
@@ -35,11 +36,13 @@ if (window.SwitcherListener == undefined) {
             $('#pressed_key').html(keystrokes.join(" + "));
             document.getElementById("pressed_key").style.color = "red";
             event.preventDefault();
-            if (keystrokes.length <= correct_shortcut.split(' + ').length && document.getElementById("pressed_key").style.color == "red") {
+            if (keystrokes.length <= correctShortcutArr.length && document.getElementById("pressed_key").style.color == "red") {
                 setTimeout(() => {
-                    keystrokes = [];
                     $('#pressed_key').html(keystrokes.join(" + "));
                 }, 1500);
+                if (document.getElementById("pressed_key").style.color == "red") {
+                    keystrokes = [];
+                }
             }
         }
     })
