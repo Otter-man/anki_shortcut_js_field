@@ -28,7 +28,10 @@ if (window.SwitcherListener == undefined) {
 
         if (keystrokes_sorted.toString().toLowerCase() == correctShortcutStr) {
             $('#pressed_key').html(correctShortcut);
+            document.getElementById("pressed_key").style.visibility = "hidden";
             document.getElementById("pressed_key").style.color = "green";
+            $('#right_shortcut').html(correctShortcut);
+            document.getElementById("right_shortcut").style.color = "green";
             event.preventDefault();
         }
         else {
