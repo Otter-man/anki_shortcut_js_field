@@ -56,7 +56,7 @@ if (window.SwitcherListener == undefined) {
                 setTimeout(() => {
                     keystrokes = [];
                     $('#pressed_key').html(keystrokes.join(" + "));
-                }, 100 * correctShortcutArr.length);
+                }, 1000 * correctShortcutArr.length);
             }
         }
     })
