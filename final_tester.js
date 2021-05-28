@@ -1,45 +1,82 @@
 
 var keystrokes = [];
+var keystrokesCode = [];
 var correctShortcut = document.getElementById("shortcut").textContent;
 var correctShortcutArr = correctShortcut.split(/(?:\+| )/).map(function (item) {
-    return item.trim();
+    return item.trim().toLowerCase();
 }).sort();
 var correctShortcutStr = correctShortcutArr.toString().toLowerCase()
 
 var keyboardEvent = document.createEvent('KeyboardEvent');
 var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
 
-
+var doubleKeys = {
+    'Backquote': ['~', '`'], 'Digit1': [1, '!'], 'Digit2': [2, '@'],
+    'Digit3': [3, '#'], 'Digit4': [4, '$'], 'Digit5': [5, '%'], 'Digit6': [6, '^'],
+    'Digit7': [7, "&"], 'Digit8': [8, '*'], 'Digit9': [9, '('], 'Digit0': [0, ')'],
+    'Minus': ['-', '_'], 'Equal': ['=', '+'], 'Backslash': ['\\', '|'], 'BracketLeft': ['[', '{'],
+    'BracketRight': [']', '}'], 'Quote': ["'", '"'], 'Semicolon': [';', ':'], 'Comma': [',', '<'],
+    'Period': [".", '>'], 'Slash': ['/', '?']
+};
 
 if (window.SwitcherListener == undefined) {
     window.SwitcherListener = true
     $(document).keydown(function (event) {
+
         if (keystrokes.length < correctShortcutArr.length) {
             if (event.keyCode == 32) {
+                event.preventDefault();
                 keystrokes.push(event.code);
+                keystrokesCode.push(event.code);
             }
             else {
+                event.preventDefault();
                 keystrokes.push(event.key);
-            };
-            event.preventDefault();
+                keystrokesCode.push(event.code);
+            }
         }
         else if (keystrokes.length >= correctShortcutArr.length) {
             keystrokes = [];
+            keystrokesCode = [];
             if (event.keyCode == 32) {
+                event.preventDefault();
                 keystrokes.push(event.code);
+                keystrokesCode.push(event.code);
             }
             else {
+                event.preventDefault();
                 keystrokes.push(event.key);
-            };
-            event.preventDefault();
+                keystrokesCode.push(event.code);
+            }
         }
         $('#pressed_key').html(keystrokes.join(" + "));
         document.getElementById("pressed_key").style.visibility = "visible";
         document.getElementById("pressed_key").style.color = "red";
 
-        var keystrokes_sorted = keystrokes.slice().sort()
+        var keystrokesSorted = keystrokes.slice()
+        var keystrokesSortedAlt1 = keystrokesSorted.slice()
+        var keystrokesSortedAlt2 = keystrokesSorted.slice()
 
-        if (keystrokes_sorted.toString().toLowerCase() == correctShortcutStr) {
+        for (i = 0; i < keystrokesCode.length; i++) {
+            if (doubleKeys[keystrokesCode[i]] !== undefined) {
+                keystrokesSortedAlt1[i] = doubleKeys[keystrokesCode[i]][0];
+                keystrokesSortedAlt2[i] = doubleKeys[keystrokesCode[i]][1];
+            }
+        }
+
+        keystrokesSorted = keystrokesSorted.map(function (item) {
+            return item.trim().toLowerCase();
+        }).sort();
+        keystrokesSortedAlt1 = keystrokesSortedAlt1.sort().map(function (item) {
+            return item.trim().toLowerCase();
+        }).sort();
+        keystrokesSortedAlt2 = keystrokesSortedAlt2.sort().map(function (item) {
+            return item.trim().toLowerCase();
+        }).sort();
+
+
+
+        if (keystrokesSorted.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt1.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt2.toString().toLowerCase() == correctShortcutStr) {
             document.getElementById("pressed_key").style.visibility = "hidden";
             keystrokes = [];
             $('#pressed_key').html(keystrokes.join(" + "));
