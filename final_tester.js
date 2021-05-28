@@ -1,7 +1,7 @@
 
 var keystrokes = [];
 var correctShortcut = document.getElementById("shortcut").textContent;
-var correctShortcutArr = correctShortcut.split('+').map(function (item) {
+var correctShortcutArr = correctShortcut.split(/(?:\+| )/).map(function (item) {
     return item.trim();
 }).sort();
 var correctShortcutStr = correctShortcutArr.toString().toLowerCase()
@@ -56,7 +56,7 @@ if (window.SwitcherListener == undefined) {
                 setTimeout(() => {
                     keystrokes = [];
                     $('#pressed_key').html(keystrokes.join(" + "));
-                }, 1500);
+                }, 100 * correctShortcutArr.length);
             }
         }
     })
