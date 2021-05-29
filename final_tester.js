@@ -7,7 +7,7 @@ var correctShortcutArr = correctShortcut.split(/(?:\+| )/).map(function (item) {
 }).sort();
 var correctShortcutStr = correctShortcutArr.toString().toLowerCase()
 
-// This var contains all the keys that are modified when you press shift together.
+// var contains all the keys that are modified when you press shift together.
 var doubleKeys = {
     'Backquote': ['~', '`'], 'Digit1': [1, '!'], 'Digit2': [2, '@'],
     'Digit3': [3, '#'], 'Digit4': [4, '$'], 'Digit5': [5, '%'], 'Digit6': [6, '^'],
@@ -18,6 +18,8 @@ var doubleKeys = {
 };
 
 if (window.SwitcherListener == undefined) {
+    // prevent starting second instances of event listener in the
+    // same window with this switcher
     window.SwitcherListener = true
     $(document).keydown(function (event) {
 
@@ -52,29 +54,28 @@ if (window.SwitcherListener == undefined) {
         document.getElementById("pressed_key").style.color = "red";
 
         var keystrokesSorted = keystrokes.slice()
-        var keystrokesSortedAlt1 = keystrokesSorted.slice()
-        var keystrokesSortedAlt2 = keystrokesSorted.slice()
+        var keystrokesSortedAlt = keystrokesSorted.slice()
 
+        // check if the pressed key can be modified by shift, if yes make two
+        // different arrays to keep both versions for comparison with the answer
+        // shortcut 
         for (i = 0; i < keystrokesCode.length; i++) {
             if (doubleKeys[keystrokesCode[i]] !== undefined) {
-                keystrokesSortedAlt1[i] = doubleKeys[keystrokesCode[i]][0];
-                keystrokesSortedAlt2[i] = doubleKeys[keystrokesCode[i]][1];
+                keystrokesSorted[i] = doubleKeys[keystrokesCode[i]][0];
+                keystrokesSortedAlt[i] = doubleKeys[keystrokesCode[i]][1];
             }
         }
 
         keystrokesSorted = keystrokesSorted.map(function (item) {
             return item.trim().toLowerCase();
         }).sort();
-        keystrokesSortedAlt1 = keystrokesSortedAlt1.sort().map(function (item) {
-            return item.trim().toLowerCase();
-        }).sort();
-        keystrokesSortedAlt2 = keystrokesSortedAlt2.sort().map(function (item) {
+        keystrokesSortedAlt = keystrokesSortedAlt.sort().map(function (item) {
             return item.trim().toLowerCase();
         }).sort();
 
 
 
-        if (keystrokesSorted.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt1.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt2.toString().toLowerCase() == correctShortcutStr) {
+        if (keystrokesSorted.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt.toString().toLowerCase() == correctShortcutStr) {
             document.getElementById("pressed_key").style.visibility = "hidden";
             keystrokes = [];
             $('#pressed_key').html(keystrokes.join(" + "));
