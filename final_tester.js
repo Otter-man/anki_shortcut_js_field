@@ -47,9 +47,6 @@ if (window.SwitcherListener == undefined) {
                 keystrokesCode.push(event.code);
             }
         }
-        $('#pressed_key').html(keystrokes.join(" + "));
-        document.getElementById("pressed_key").style.visibility = "visible";
-        document.getElementById("pressed_key").style.color = "red";
 
         var keystrokesSorted = keystrokes.slice()
         var keystrokesSortedAlt1 = keystrokesSorted.slice()
@@ -75,24 +72,10 @@ if (window.SwitcherListener == undefined) {
 
 
         if (keystrokesSorted.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt1.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt2.toString().toLowerCase() == correctShortcutStr) {
-            document.getElementById("pressed_key").style.visibility = "hidden";
             keystrokes = [];
-            $('#pressed_key').html(keystrokes.join(" + "));
             $('#right_shortcut').html(correctShortcut);
             document.getElementById("right_shortcut").style.color = "green";
             event.preventDefault();
-        }
-        else {
-            document.getElementById("pressed_key").style.visibility = "visible";
-            $('#pressed_key').html(keystrokes.join(" + "));
-            document.getElementById("pressed_key").style.color = "red";
-            event.preventDefault();
-            if (keystrokes.length <= correctShortcutArr.length && document.getElementById("pressed_key").style.color == "red") {
-                setTimeout(() => {
-                    keystrokes = [];
-                    $('#pressed_key').html(keystrokes.join(" + "));
-                }, 1000 * correctShortcutArr.length);
-            }
         }
     })
 };
