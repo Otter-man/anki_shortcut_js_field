@@ -7,9 +7,7 @@ var correctShortcutArr = correctShortcut.split(/(?:\+| )/).map(function (item) {
 }).sort();
 var correctShortcutStr = correctShortcutArr.toString().toLowerCase()
 
-var keyboardEvent = document.createEvent('KeyboardEvent');
-var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
-
+// This var contains all the keys that are modified when you press shift together.
 var doubleKeys = {
     'Backquote': ['~', '`'], 'Digit1': [1, '!'], 'Digit2': [2, '@'],
     'Digit3': [3, '#'], 'Digit4': [4, '$'], 'Digit5': [5, '%'], 'Digit6': [6, '^'],
@@ -36,8 +34,8 @@ if (window.SwitcherListener == undefined) {
             }
         }
         else if (keystrokes.length >= correctShortcutArr.length) {
-            keystrokes = [];
-            keystrokesCode = [];
+            keystrokes.shift();
+            keystrokesCode.shift();
             if (event.keyCode == 32) {
                 event.preventDefault();
                 keystrokes.push(event.code);
