@@ -9,14 +9,13 @@ var correctShortcutStr = correctShortcutArr.toString().toLowerCase()
 
 // var contains all the keys that are modified when you press shift together.
 var doubleKeys = {
-    'Backquote': ['~', '`'], 'Digit1': [1, '!'], 'Digit2': [2, '@'],
-    'Digit3': [3, '#'], 'Digit4': [4, '$'], 'Digit5': [5, '%'],
-    'Digit6': [6, '^'], 'Digit7': [7, "&"], 'Digit8': [8, '*'],
-    'Digit9': [9, '('], 'Digit0': [0, ')'], 'Minus': ['-', '_'],
+    'Backquote': ['~', '`'], 'Digit1': ['1', '!'], 'Digit2': ['2', '@'],
+    'Digit3': ['3', '#'], 'Digit4': ['4', '$'], 'Digit5': ['5', '%'],
+    'Digit6': ['6', '^'], 'Digit7': ['7', "&"], 'Digit8': ['8', '*'],
+    'Digit9': ['9', '('], 'Digit0': ['0', ')'], 'Minus': ['-', '_'],
     'Equal': ['=', '+'], 'Backslash': ['\\', '|'], 'BracketLeft': ['[', '{'],
     'BracketRight': [']', '}'], 'Quote': ["'", '"'], 'Semicolon': [';', ':'],
-    'Comma': [',', '<'], 'Period': [".", '>'], 'Slash': ['/', '?'],
-    'MetaLeft': ['cmd', 'cmd'], 'MetaRight': ['cmd', 'cmd']
+    'Comma': [',', '<'], 'Period': [".", '>'], 'Slash': ['/', '?']
 };
 
 if (window.SwitcherListener == undefined) {
@@ -31,6 +30,11 @@ if (window.SwitcherListener == undefined) {
                 keystrokes.push(event.code);
                 keystrokesCode.push(event.code);
             }
+            else if (event.code.includes('Meta')) {
+                event.preventDefault();
+                keystrokes.push('cmd');
+                keystrokesCode.push(event.code);
+            }
             else {
                 event.preventDefault();
                 keystrokes.push(event.key);
@@ -43,6 +47,11 @@ if (window.SwitcherListener == undefined) {
             if (event.keyCode == 32) {
                 event.preventDefault();
                 keystrokes.push(event.code);
+                keystrokesCode.push(event.code);
+            }
+            else if (event.code.includes('Meta')) {
+                event.preventDefault();
+                keystrokes.push('cmd');
                 keystrokesCode.push(event.code);
             }
             else {
