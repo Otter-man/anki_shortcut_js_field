@@ -60,6 +60,11 @@ if (window.SwitcherListener == undefined) {
                 keystrokesCode.push(event.code);
             }
         }
+        // this block is for debugging.
+        // to use it you need to uncomment it
+        // $('#pressed_key').html(keystrokes.join(" + "));
+        // document.getElementById("pressed_key").style.visibility = "visible";
+        // document.getElementById("pressed_key").style.color = "red";
 
         var keystrokesSorted = keystrokes.slice()
         var keystrokesSortedAlt = keystrokesSorted.slice()
@@ -86,6 +91,7 @@ if (window.SwitcherListener == undefined) {
         if (keystrokesSorted.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt.toString().toLowerCase() == correctShortcutStr) {
             keystrokes = [];
             $('#right_shortcut').html(correctShortcut);
+            $('#shortcut').html('');
             document.getElementById("right_shortcut").style.color = "green";
             event.preventDefault();
         }
