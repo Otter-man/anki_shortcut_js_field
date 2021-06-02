@@ -1,7 +1,7 @@
 var keystrokes = [];
 var keystrokesCode = [];
 var correctShortcut = document.getElementById("shortcut").textContent;
-var correctShortcutArr = correctShortcut.split(/(?:\+| )/).map(function (item) {
+var correctShortcutArr = correctShortcut.split(/(?: ?\+ ?| )/).map(function (item) {
     return item.trim().toLowerCase();
 }).sort();
 var correctShortcutStr = correctShortcutArr.toString().toLowerCase()
