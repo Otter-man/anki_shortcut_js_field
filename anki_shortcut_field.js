@@ -1,4 +1,3 @@
-
 var keystrokes = [];
 var keystrokesCode = [];
 var correctShortcut = document.getElementById("shortcut").textContent;
@@ -18,6 +17,8 @@ var doubleKeys = {
     'Comma': [',', '<'], 'Period': [".", '>'], 'Slash': ['/', '?']
 };
 
+$('#shortcut').html("press shortcut");
+document.getElementById("shortcut").style.color = "grey";
 if (window.SwitcherListener == undefined) {
     // prevent starting second instances of event listener in the
     // same window with this switcher
@@ -41,30 +42,6 @@ if (window.SwitcherListener == undefined) {
                 keystrokesCode.push(event.code);
             }
         }
-        else if (keystrokes.length >= correctShortcutArr.length) {
-            keystrokes.shift();
-            keystrokesCode.shift();
-            if (event.keyCode == 32) {
-                event.preventDefault();
-                keystrokes.push(event.code);
-                keystrokesCode.push(event.code);
-            }
-            else if (event.code.includes('Meta')) {
-                event.preventDefault();
-                keystrokes.push('cmd');
-                keystrokesCode.push(event.code);
-            }
-            else {
-                event.preventDefault();
-                keystrokes.push(event.key);
-                keystrokesCode.push(event.code);
-            }
-        }
-        // this block is for debugging.
-        // to use it you need to uncomment it
-        // $('#pressed_key').html(keystrokes.join(" + "));
-        // document.getElementById("pressed_key").style.visibility = "visible";
-        // document.getElementById("pressed_key").style.color = "red";
 
         var keystrokesSorted = keystrokes.slice()
         var keystrokesSortedAlt = keystrokesSorted.slice()
@@ -89,11 +66,15 @@ if (window.SwitcherListener == undefined) {
 
 
         if (keystrokesSorted.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt.toString().toLowerCase() == correctShortcutStr) {
-            keystrokes = [];
-            $('#right_shortcut').html(correctShortcut);
-            $('#shortcut').html('');
-            document.getElementById("right_shortcut").style.color = "green";
+            $('#shortcut').html(correctShortcut);
+            document.getElementById("shortcut").style.color = "green";
             event.preventDefault();
         }
+        else if (keystrokes.length == correctShortcutArr.length) {
+            document.getElementById("shortcut").style.color = "red";
+            $('#shortcut').html(keystrokes.join("+"));
+            event.preventDefault();
+        };
+
     })
 };
