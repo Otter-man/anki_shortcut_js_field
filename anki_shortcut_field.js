@@ -19,6 +19,7 @@ var doubleKeys = {
 
 $('#shortcut').html("press shortcut");
 document.getElementById("shortcut").style.color = "grey";
+document.getElementById("shortcut").style.visibility = "visible";
 if (window.SwitcherListener == undefined) {
     // prevent starting second instances of event listener in the
     // same window with this switcher
