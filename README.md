@@ -14,6 +14,19 @@ Works on Mac only if the user disables `⌥`(`alt` key)  modification on their s
 
 https://user-images.githubusercontent.com/59960096/121016486-619c0900-c7c6-11eb-877d-e810dbc6ef14.mp4
 
+# Table of Contents
+
+* [JS-powered interactive field for shortcut-drilling using Anki for Windows and Linux](#js-powered-interactive-field-for-shortcut-drilling-using-anki-for-windows-and-linux)
+* [Table of Contents](#table-of-contents)
+   * [Installation](#installation)  
+         * [Easy way](#easy-way)  
+         * [Slightly harder way](#slightly-harder-way)  
+   * [Adding your shortcuts: formatting and key names.](#adding-your-shortcuts-formatting-and-key-names)  
+         * [Formatting](#formatting)  
+         * [Special keys names](#special-keys-names)  
+         * [Other keys names](#other-keys-names)  
+   * [Things that don't work.](#things-that-dont-work)
+
 
 ## Installation
 
