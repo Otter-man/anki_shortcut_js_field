@@ -44,7 +44,8 @@ var doubleKeys = {
     "NumpadMultiply": ["*", "*"],
     "NumpadSubtract": ["-", "-"],
     "NumpadAdd": ["+", "+"],
-    "NumpadEnter": ["Enter", "Enter"]
+    "NumpadEnter": ["Enter", "Enter"],
+    "Meta": ['Meta', 'cmd']
 };
 
 

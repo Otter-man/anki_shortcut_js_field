@@ -63,7 +63,8 @@
         "NumpadMultiply": ["*", "*"],
         "NumpadSubtract": ["-", "-"],
         "NumpadAdd": ["+", "+"],
-        "NumpadEnter": ["Enter", "Enter"]
+        "NumpadEnter": ["Enter", "Enter"],
+        "Meta": ['Meta', 'cmd']
     };
 
 
@@ -84,7 +85,7 @@
                 }
                 else if (event.code.includes('Meta')) {
                     event.preventDefault();
-                    keystrokes.push('cmd');
+                    keystrokes.push('Meta');
                     keystrokesCode.push(event.code);
                 }
                 else {
