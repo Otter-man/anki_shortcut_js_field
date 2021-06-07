@@ -14,6 +14,19 @@ Works on Mac only if the user disables `⌥`(`alt` key)  modification on their s
 
 https://user-images.githubusercontent.com/59960096/121016486-619c0900-c7c6-11eb-877d-e810dbc6ef14.mp4
 
+# Table of Contents
+
+* [JS-powered interactive field for shortcut-drilling using Anki for Windows and Linux](#js-powered-interactive-field-for-shortcut-drilling-using-anki-for-windows-and-linux)
+* [Table of Contents](#table-of-contents)
+   * [Installation](#installation)  
+         * [Easy way](#easy-way)  
+         * [Slightly harder way](#slightly-harder-way)  
+   * [Adding your shortcuts: formatting and key names.](#adding-your-shortcuts-formatting-and-key-names)  
+         * [Formatting](#formatting)  
+         * [Special keys names](#special-keys-names)  
+         * [Other keys names](#other-keys-names)  
+   * [Things that don't work.](#things-that-dont-work)
+
 
 ## Installation
 
@@ -37,30 +50,30 @@ you want it to work offline or not (read above in the `Easy way` for more info o
 
 ## Adding your shortcuts: formatting and key names.
 
-#### Formatting:
+### Formatting:
 All keys should be either written with '+" or ' '(space) between them.  
 
 Examples:  
 
-`Shift+Control+P`  
-`Control+K F12`  
-`Shift+Control+Alt+ArrowUp`  
-`cmd+Alt++` (this is a shortcut with three buttons `cmd`, `Alt` and `+`)  
-`Control+K Control+0`
+* `Shift+Control+P`  
+* `Control+K F12`  
+* `Shift+Control+Alt+ArrowUp`  
+* `cmd+Alt++` (this is a shortcut with three buttons `cmd`, `Alt` and `+`)  
+* `Control+K Control+0`
 
-#### Special keys names:
+### Special keys names:
 
 All keys are independent of the register, so `Alt` can be written as `ALT`, `Alt` or `alt`.  
-`Alt` should be `Alt`.  
-`Shift` should be `Shift`.  
-`Enter`should be `Enter`.  
-`Space` should be `Space`.  
-`Control` should always be `Control`, never use `ctrl`.  
-`Backspace`, `PageUp`, `Delete`, and so on should be named as their full names without spaces.
-`Meta` key (this is `Win` key on windows, `cmd` key on mac) should be written as `cmd` or `Meta`.  
-Arrow keys should be written like this `ArrowUp`, `ArrowDown`, `ArrowLeft`, and `ArrowRight`.
+* `Alt` should be `Alt`.  
+* `Shift` should be `Shift`.  
+* `Enter`should be `Enter`.  
+* `Space` should be `Space`.  
+* `Control` should always be `Control`, never use `ctrl`.  
+* `Backspace`, `PageUp`, `Delete`, and so on should be named as their full names without spaces.
+* `Meta` key (this is `Win` key on windows, `cmd` key on mac) should be written as `cmd` or `Meta`.  
+* Arrow keys should be written like this `ArrowUp`, `ArrowDown`, `ArrowLeft`, and `ArrowRight`.
 
-#### Other keys names:
+### Other keys names:
 Other keys should be set as they are typed. 
 
 You can look up examples in pre-made decks for VScode in [example_deck folder](/example_deck)
