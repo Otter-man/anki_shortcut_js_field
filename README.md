@@ -8,7 +8,7 @@ Built using JQuery.
 Inspired by a site [ShortcutFoo](https://shortcutfoo.com), this script allows you to build muscle memory for shortcuts by pressing them 
 on the keyboard while reviewing a note in Anki.
 
-Works on Linux and Windows.  
+Works on Linux and Windows with standard QWERTY english layout.  
 Works on Mac only if the user disables `⌥`(`alt` key)  modification on their system - full mac support later.
 
 
