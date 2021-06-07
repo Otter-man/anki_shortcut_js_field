@@ -1,3 +1,4 @@
+
 # JS-powered interactive field for shortcut-drilling using Anki for Windows and Linux
 
 JS-script for [Anki](https://apps.ankiweb.net/), that allows creation of interactive field for catching
@@ -10,12 +11,7 @@ on keyboard while reviewing a note in Anki.
 Works for Linux and Windows.  
 Works for Mac only if user disables `⌥`(`alt` key)  modification on their system - full support for mac later.
 
-
-<figure class="video_container">
-  <video controls="true" allowfullscreen="true" poster="images/BackSide.jpg">
-    <source src="images/shortcut_demonstration.mp4" type="video/mp4">
-  </video>
-</figure>
+![demonstration](images/shortcut_demonstration.mp4)
 
 
 ## Installation
