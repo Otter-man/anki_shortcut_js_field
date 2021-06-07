@@ -11,7 +11,9 @@ on keyboard while reviewing a note in Anki.
 Works for Linux and Windows.  
 Works for Mac only if user disables `⌥`(`alt` key)  modification on their system - full support for mac later.
 
-![demonstration](images/shortcut_demonstration.mp4)
+
+![demonstration](https://user-images.githubusercontent.com/59960096/121014155-da4d9600-c7c3-11eb-8942-b7aa85adb927.mp4)
+
 
 
 ## Installation
