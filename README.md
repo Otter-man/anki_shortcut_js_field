@@ -14,6 +14,9 @@ Works for Mac only if user disables `⌥`(`alt` key)  modification on their syst
 
 ![demonstration](https://user-images.githubusercontent.com/59960096/121014155-da4d9600-c7c3-11eb-8942-b7aa85adb927.mp4)
 
+![demonstration](https://user-images.githubusercontent.com/59960096/121014485-3c0e0000-c7c4-11eb-907a-f80e858770a5.mov)
+
+
 
 
 ## Installation
