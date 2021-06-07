@@ -66,8 +66,8 @@ if (window.SwitcherListener == undefined) {
             }
             else if (event.code.includes('Meta')) {
                 event.preventDefault();
-                keystrokes.push('cmd');
-                keystrokesCode.push(event.code);
+                keystrokes.push('Meta');
+                keystrokesCode.push('Meta');
             }
             else {
                 event.preventDefault();
