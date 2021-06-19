@@ -26,7 +26,7 @@ hr {
     color: white !important;
 }
 
-#shortcut {
+#shortcut,#shortcut-back {
 	font-family:"Lucida Console";
 	color: green;
 }
