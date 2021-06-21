@@ -77,28 +77,30 @@ if (window.SwitcherListener == undefined) {
         }
 
         var keystrokesSorted = keystrokes.slice()
-        var keystrokesSortedAlt = keystrokesSorted.slice()
+        var keystrokesSortedAlt1 = keystrokesSorted.slice()
+        var keystrokesSortedAlt2 = keystrokesSorted.slice()
 
         // check if the pressed key can be modified by shift, if yes make two
         // different arrays to keep both versions for comparison with the answer
         // shortcut 
         for (i = 0; i < keystrokesCode.length; i++) {
             if (doubleKeys[keystrokesCode[i]] !== undefined) {
-                keystrokesSorted[i] = doubleKeys[keystrokesCode[i]][0];
-                keystrokesSortedAlt[i] = doubleKeys[keystrokesCode[i]][1];
+                keystrokesSortedAlt1[i] = doubleKeys[keystrokesCode[i]][0];
+                keystrokesSortedAlt2[i] = doubleKeys[keystrokesCode[i]][1];
             }
         }
 
         keystrokesSorted = keystrokesSorted.map(function (item) {
             return item.trim().toLowerCase();
         }).sort();
-        keystrokesSortedAlt = keystrokesSortedAlt.sort().map(function (item) {
+        keystrokesSortedAlt1 = keystrokesSortedAlt1.sort().map(function (item) {
+            return item.trim().toLowerCase();
+        }).sort();
+        keystrokesSortedAlt2 = keystrokesSortedAlt2.sort().map(function (item) {
             return item.trim().toLowerCase();
         }).sort();
 
-
-
-        if (keystrokesSorted.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt.toString().toLowerCase() == correctShortcutStr) {
+        if (keystrokesSorted.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt1.toString().toLowerCase() == correctShortcutStr || keystrokesSortedAlt2.toString().toLowerCase() == correctShortcutStr) {
             $('#shortcut').html(correctShortcut);
             document.getElementById("shortcut").style.color = "green";
             event.preventDefault();
