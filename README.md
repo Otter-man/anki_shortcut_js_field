@@ -83,6 +83,5 @@ You'll still need to flip the card by pressing enter (or space) and then choosin
 
 * I couldn't find a way in JS to reliably prevent hotkeys from triggering actions in OS or other soft, so some combinations of keys don't work:
   1) Shortcuts in Windows with the `Win` button.
-  2) Shortcuts with `⌥`(`alt` key) on Mac, unless the user disables it on system level.
-  3) Shortcuts that are in the user's other installed soft unless the user disables it in the soft itself (like Nvidia Overlay and other software that catches shortcuts anywhere in the system).  
-  4) Shortcuts that conflict with Anki shortcuts. The workaround is simple: install an addon [Customize Keyboard Shortcuts](https://ankiweb.net/shared/info/24411424) and disable conflicting shortcuts. In the [example_deck folder](/example_deck) I added config for the addon with every conflicting shortcut for my VScode deck disabled.
+  2) Shortcuts that are in the user's other installed soft unless the user disables it in the soft itself (like Nvidia Overlay and other software that catches shortcuts anywhere in the system).  
+  3) Shortcuts that conflict with Anki shortcuts. The workaround is simple: install an addon [Customize Keyboard Shortcuts](https://ankiweb.net/shared/info/24411424) and disable conflicting shortcuts. In the [example_deck folder](/example_deck) I added config for the addon with every conflicting shortcut for my VScode deck disabled.
